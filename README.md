@@ -4,11 +4,11 @@ Beginning city explorer project.
 **Author**: Henok Gebremedhn, Thomas Sherer
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
-Number and name of feature: ________________________________
+Number and name of feature: Repo setup
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: all day
 
-Start time: _____
+Start time: 1345
 
 Finish time: _____
 
