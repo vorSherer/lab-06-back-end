@@ -25,7 +25,7 @@ app.get('/location', (request, response) => {
     response.send(locationData);
   }
   catch(error){
-    errorHandler('So sorry, something went wrong.', request, response);
+    console.log('So sorry, something went wrong.', request, response);
   }
 })
 
