@@ -22,10 +22,11 @@ app.get('/location', (request, response) => {
     const geoData = require('./data/geo.json');
     const city = request.query.city;
     const locationData = new Location(city, geoData);
+    console.log('location: ', locationData);
     response.send(locationData);
   }
   catch(error){
-    console.log('So sorry, something went wrong.', request, response);
+    console.log('So sorry, something went wrong.', error);
   }
 })
 
@@ -42,6 +43,17 @@ app.get('/location', (request, response) => {
 //     }
 // })
 
+// Locaation Constructor
+function Location(city, geoData) {
+    this.search_query = city;
+    this.formatted_query = geoData[0].display_name;
+    this.latitude = geoData[0].lat;
+    this.longitude = geoData[0].lon;
+}
+
+// function errorHandler(error, request, response) {
+//     response.status(500).send(error);
+// }
 
 // Server Listener
 app.listen(PORT, () => console.log(`Server up on port ${PORT}`));
