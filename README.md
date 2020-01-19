@@ -10,9 +10,9 @@ Estimate of time needed to complete: all day
 
 Start time: 1345
 
-Finish time: _____
+Finish time: 1759
 
-Actual time needed to complete: _____
+Actual time needed to complete: 4 hrs 15 min.
 
 *****************************************************************************
 
