@@ -30,25 +30,35 @@ app.get('/location', (request, response) => {
   }
 })
 
-// app.get('/weather', (request, response) => {
-//     try{
-//         const geoData = require('./data/geo.json');
-//         const city = request.query.city;
-//         console.log(request.query);
-//         const locationData = new Location(city, geoData);
-//         response.send(locationData);
-//     }
-//     catch(error){
-//         errorHandler('So sorry, something went wrong.', request, response);
-//     }
-// })
+app.get('/weather', (request, response) => {
+  try{
+    const wxData = require('./data/darksky.json');
+    const weatherData = [];
+    wxData.daily.data.forEach(value => {
+      const localWx = new Weather(value);
+      weatherData.push(localWx);
+    });
+    console.log('WX', weatherData);
+    response.send(weatherData);
+  }
+  catch(error){
+    console.log('So sorry, something went wrong.', error);
+  }
+})
 
-// Locaation Constructor
+// Location Constructor
 function Location(city, geoData) {
-    this.search_query = city;
-    this.formatted_query = geoData[0].display_name;
-    this.latitude = geoData[0].lat;
-    this.longitude = geoData[0].lon;
+  this.search_query = city;
+  this.formatted_query = geoData[0].display_name;
+  this.latitude = geoData[0].lat;
+  this.longitude = geoData[0].lon;
+}
+
+// Location Weather Constructor
+function Weather(localObj) {
+  this.forecast = localObj.summary;
+  this.time = new Date(localObj.time * 1000).toUTCString().slice(0, 16);
+
 }
 
 // function errorHandler(error, request, response) {
